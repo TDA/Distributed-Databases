@@ -1,0 +1,7 @@
+README
+
+The MyThread and MyJoinThread classes are the base classes for our threads. The utility functions retrieverecords, storerecords etc are used for interfacing with the database.
+The createoutputtable and createjoinoutputtable functions are used to create the required tables for outputting.
+Most of the logic is in the run methods of the respective threads and for both SORT and JOIN we first extract the data from the db. Then we run the SORT/JOIN in parallel amongst multiple threads and store the result in the db.
+Both operations have been optimized by reducing the dataset returned to each of the threads so that they can run locally.
+Eg: instead of 100x100 operations for 100 records, 20x20 is done in each of the threads ~ a 80% reduction.
